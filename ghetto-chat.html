@@ -1,13 +1,46 @@
 <head>
-  <title>ghetto-chat</title>
+  <title>Ghetto Chat</title>
 </head>
 
 <body>
-  {{> hello}}
+
+  {{> roomList}}
+  <hr>
+  {{> roomView}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="roomList">
+  <h1>Welcome to Ghetto Chat</h1>
+  <div class="rooms">
+    {{#each rooms}}
+      {{> room}}
+    {{/each}}
+  </div>
+
+  <div id="createRoom">
+    Room Name: <input type="text" id="new-room-name" placeholder="New room" /> <input type="button" id="new-room" value="create"/>
+  </div>
+</template>
+
+<template name="room">
+  <div class="room {{selected}}">
+    <p>
+      {{ name }}
+      <input type="button" id="edit-room" value="Open"/>
+      <input type="button" id="delete-room" value="Delete"/>
+    </p>
+  </div>
+</template>
+
+<template name="roomView">
+  <div id="container">
+  {{#if selectedRoom}}
+  {{#with selectedRoom}}
+    <div class="display">
+      <p>{{ name }}</p>
+      <textarea id="room-text" rows="10" cols="80">{{ text }}</textarea>
+    </div>
+  {{/with}}
+  {{/if}}
+  </div>
 </template>
