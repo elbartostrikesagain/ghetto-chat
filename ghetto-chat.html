@@ -3,8 +3,8 @@
 </head>
 
 <body>
-
   {{> roomList}}
+  Username: <input type="text" id="user-name" value="Unknown" />
   <hr>
   {{> roomView}}
 </body>
@@ -38,7 +38,8 @@
   {{#with selectedRoom}}
     <div class="display">
       <p>{{ name }}</p>
-      <textarea id="room-text" rows="10" cols="80">{{ text }}</textarea>
+      <textarea id="room-text" rows="10" cols="80" disabled="disabled">{{ text }}</textarea>
+      <p><input type="text" id="chat-input-text" /> <input type="button" id="chat-input" value="Submit"/></p>
     </div>
   {{/with}}
   {{/if}}
